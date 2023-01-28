@@ -33,10 +33,12 @@ namespace JsonToXml
 
         private void Convert_Click(object sender, RoutedEventArgs e)
         {
-            XNode node = JsonConvert.DeserializeXNode(myText.Text, "Root");
-            myText.Text = node.ToString();
-            export.IsEnabled = true;
-            export.Foreground = Brushes.White;
+            if (myText.Text.Substring(0, 6) != "<Root>"){
+                XNode node = JsonConvert.DeserializeXNode(myText.Text, "Root");
+                myText.Text = node.ToString();
+                export.IsEnabled = true;
+                export.Foreground = Brushes.White;
+            }
         }
 
         private void Export_Click(object sender, RoutedEventArgs e)
